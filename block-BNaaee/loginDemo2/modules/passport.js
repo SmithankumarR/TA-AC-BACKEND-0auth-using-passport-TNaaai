@@ -1,7 +1,7 @@
 var passport = require('passport');
 var User = require('../models/user');
 var GitHubStrategy = require('passport-github').Strategy;
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 // github strategy
 
@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: '/auth/github/callback',
+      callbackURL: 'http://localhost:3000/auth/github/callback',
     },
     function (accessToken, refreshToken, profile, done) {
       console.log(profile);
@@ -41,7 +41,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: '/auth/google/callback',
+      callbackURL: 'http://localhost:3000/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
       console.log(profile);

@@ -11,10 +11,16 @@ router.get('/', function (req, res, next) {
 router.get('/success', function (req, res, next) {
   res.render('success');
 });
+router.get('/success_google', function (req, res, next) {
+  res.render('success_google');
+});
 
 /* Failure. */
 router.get('/failure', function (req, res, next) {
   res.render('failure');
+});
+router.get('/failure_google', function (req, res, next) {
+  res.render('failure_google');
 });
 
 //passport github route
@@ -41,10 +47,10 @@ router.get(
 
 router.get(
   '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/failure' }),
+  passport.authenticate('google', { failureRedirect: '/failure_google' }),
   function (req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/success');
+    res.redirect('/success_google');
   }
 );
 
